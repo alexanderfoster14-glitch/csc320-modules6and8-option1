@@ -111,7 +111,7 @@ Note: There must be a better option to read and rewrite a file than to create an
 
 Current expected formatting for each vehicle, assuming an ArrayList of Arrays
 	ArrayList of Arrays as the complete inventory, each ArrayList element is 1 Array with 5 elements
-	1 Array for	each vehicle in the inventory
+	1 Array for each vehicle in the inventory
 
 Vehicle #: as the Array element # within the ArrayList
 Vehicle Make as a String
