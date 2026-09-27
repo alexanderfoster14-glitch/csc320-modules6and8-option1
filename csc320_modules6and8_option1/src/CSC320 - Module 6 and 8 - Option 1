@@ -91,6 +91,7 @@ Basic program functionality:
 	2) Create an ArrayList of Arrays that can be modified
 		createInventoryArrayList()
 	3) Request from user what they would like to do:
+		selectOption()
 		a: Print current complete vehicle inventory
 			printCurrentInventory()
 		b: Add a new listing
@@ -247,9 +248,9 @@ public <file type?> updateFileInfo(String <aary?> vehicle info) {
 	return; return file? return void?
 }
 
-public String whatDo() {
+public String selectOption() {
 	request from use "What would you like to do?"
-	"Select an option from below as 1, 2, 3, 4, or 5"
+	"Select an option from below as 1, 2, 3, 4, 5, 6"
 	"1: Print current complete vehicle inventory"
 	"2: Add a new listing"
 	"3: Remove an existing listing"
