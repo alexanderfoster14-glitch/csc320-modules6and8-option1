@@ -1,3 +1,5 @@
+Module 6:
+
 Instructions
 
 Option #1:
@@ -7,8 +9,8 @@ Submit document with methods for your automobile class,
 
 Example:
 
-public String RemoveVehicle(String
-autoMake, String autoModel, String autoColor, int autoYear)
+public String RemoveVehicle(String autoMake, String autoModel,
+	String autoColor, int autoYear)
 If
 	values entered match values stored in private variables
 	remove vehicle information
@@ -18,7 +20,6 @@ else
 
 End of instructions
 -------------------------------------------------------------------------------------------
-
 Module 8:
 
 Option #1: 
@@ -84,10 +85,12 @@ Compile your Module 1-6 programs with corrections, lessons learned reflection, a
 	Submit your completed Portfolio Project by the posted due date.
 
 -------------------------------------------------------------------------------------------
-
 Basic program functionality:
 	1) Read current inventory from a file
-	2) Request from user what they would like to do:
+		getFileLocation()
+	2) Create an ArrayList of Arrays that can be modified
+		createInventoryArrayList()
+	3) Request from user what they would like to do:
 		a: Print current complete vehicle inventory
 			printCurrentInventory()
 		b: Add a new listing
@@ -103,7 +106,9 @@ Basic program functionality:
 		updateFileInfo()
 	4) Request from use what they would like to do.
 
-	
+Note: There must be a better option to read and rewrite a file than to create an array of the entire file.
+	Options for reading and writing to a file?
+
 Current expected formatting for each vehicle, assuming an ArrayList of Arrays
 	ArrayList of Arrays as the complete inventory, each ArrayList element is 1 Array with 5 elements
 	1 Array for	each vehicle in the inventory
@@ -120,16 +125,16 @@ Example Output:
 	Nissan, Ariya, White, 2025, 18,000
 	Subaru, Solterra, Blue, 2024, 22,000
 	Chevrolet, Colorado Z71, Tan, 2022, 33,300
-	Jeep, Wrangler Rubicon, Gray, 2019, 71,300
+	Jeep, Wrangler Rubicon, Light Gray, 2019, 71,300
 
 Assumptions on vehicle info formatting:
 	All vehicle listings have all 5 categories listed
+	Each vehicle is delineated by <endline>
 
 Potential error checking:
 	Multiple strings for elements for Model or Color
-	Unknown mileage -> possibly list as "N/A"?
-	
 
+-------------------------------------------------------------------------------------------
 Some expected methods:
 
 public class automobile {
@@ -291,4 +296,23 @@ public <return type?> getCurrentVehicleInfo {
 	}
 }
 
+public String getFileLocation {
+	request file location from user;
+	update file that is currently being read/written to;
+		//process/code to select a file?
+	return string with file location;
+}
+
+public String createInventoryArrayList {
+	read information in requested file location;
+	create ArrayList of Arrays with information from file;
+		assumes vehicle info formatting of:
+			<Make>"," <Model>"," <Color>"," <Year>"," <Mileage> <endline>
+		delineate each vehicle by endline
+	return ArrayList;
+}
+
+-------------------------------------------------------------------------------------------
+Repository location on GitHub:
+https://github.com/alexanderfoster14-glitch/csc320-modules6and8-option1.git
 
