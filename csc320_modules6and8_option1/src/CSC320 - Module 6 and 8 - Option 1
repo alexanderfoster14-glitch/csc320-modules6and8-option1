@@ -2,7 +2,7 @@ Instructions
 
 Option #1:
 
-Submit document with methods for your automobile class,
+Submit document with methods for your automobile class, 
 	and pseudo code indicating functionality of each method.
 
 Example:
@@ -17,7 +17,7 @@ else
 
 
 End of instructions
-----------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
 
 Module 8:
 
@@ -83,9 +83,212 @@ Compile your Module 1-6 programs with corrections, lessons learned reflection, a
 	final program course code and application screenshots into a single document.
 	Submit your completed Portfolio Project by the posted due date.
 
+-------------------------------------------------------------------------------------------
 
+Basic program functionality:
+	1) Read current inventory from a file
+	2) Request from user what they would like to do:
+		a: Print current complete vehicle inventory
+			printCurrentInventory()
+		b: Add a new listing
+			addVehicle()
+		c: Remove an existing listing
+			removeVehicle()
+		d: Modify an existing listing
+			modifyVehicle()
+		e: search for an existing listing
+			searchInventory()
+		f: Exit the program
+	3) If the input modifies the current inventory, request if the vehicle inventory file should be modified
+		updateFileInfo()
+	4) Request from use what they would like to do.
 
+	
+Current expected formatting for each vehicle, assuming an ArrayList of Arrays
+	ArrayList of Arrays as the complete inventory, each ArrayList element is 1 Array with 5 elements
+	1 Array for	each vehicle in the inventory
 
+Vehicle #: as the Array element # within the ArrayList
+Vehicle Make as a String
+Vehicle Model as a String
+Vehicle Color as String
+Vehicle Year as XXXX
+Vehicle Mileage as XXX,XXX
 
+Example Output:
+	Ford, Mustang, Black, 2014, 121,000
+	Nissan, Ariya, White, 2025, 18,000
+	Subaru, Solterra, Blue, 2024, 22,000
+	Chevrolet, Colorado Z71, Tan, 2022, 33,300
+	Jeep, Wrangler Rubicon, Gray, 2019, 71,300
+
+Assumptions on vehicle info formatting:
+	All vehicle listings have all 5 categories listed
+
+Potential error checking:
+	Multiple strings for elements for Model or Color
+	Unknown mileage -> possibly list as "N/A"?
+	
+
+Some expected methods:
+
+public class automobile {
+	main project class
+}
+
+public static void main(String[] args) {
+	main program/method
+}
+
+public void<correct type?> printCurrentInventory (inventory file?) {
+	print entire vehicle inventory
+}
+
+public String addVehicle(String make, String model, String color, int year, int mileage) {
+	get user input for each value {
+		input for make
+			print request for make;
+			scanner for input;
+		input for model
+			print request for model;
+			scanner for input;
+		input for color
+			print request for color;
+			scanner for input;
+		input for year
+			print request for year;
+			scanner for input;
+		input for mileage
+			print request for mileage;
+			scanner for input;
+		return all elements in one array? return each item as separate method?
+	}
+	//print to screen to verify vehicle info was input correctly
+	print new vehicle info to screen {
+		print make;
+		print model;
+		print color;
+		print year;
+		print mileage;
+	}
+}
+
+public String removeVehicle(String make, String model, String color, int year) {
+	if (values match a current vehicle) {
+		remove vehicle info (by setting each value to 0);
+	}
+	else {
+		return message indicating mismatch (vehicle info not in system);
+	}
+}
+
+public String modifyVehicle(String make, String model, String color, int year, int mileage) {
+	get currently listed vehicle info from user {
+		input for make
+			print request for make;
+			scanner for input;
+		input for model
+			print request for model;
+			scanner for input;
+		input for color
+			print request for color;
+			scanner for input;
+		input for year
+			print request for year;
+			scanner for input;
+		input for mileage
+			print request for mileage;
+			scanner for input;
+		}
+	
+	get user input on which value to update {
+		output request for which 
+		if input == element name ("make", "model", "color", "year", "mileage") {
+			update element {
+				get input on updated value;
+				return updated array?						
+			}
+		}
+		return updated element(s) or array?
+	}
+}
+
+public String searchInventory(String make, String model, String color, int year, int mileage) {
+	request vehicle info from user {
+		request make
+		request model
+		request color
+		request year
+		request mileage
+	}
+	if (info matches) {
+		return vehicle array;
+	}
+	else {
+		return error "not found"
+		output info that was input by user
+	}
+}
+
+public <file type?> updateFileInfo(String <aary?> vehicle info) {
+	request from use "Do you want to print the information to a file?"
+	scanner for user input as "Y" or "N"
+	if "Y" {
+		update a file; code to update a file?
+	}
+	if "N" {
+		break; end this request
+	}
+	return; return file? return void?
+}
+
+public String whatDo() {
+	request from use "What would you like to do?"
+	"Select an option from below as 1, 2, 3, 4, or 5"
+	"1: Print current complete vehicle inventory"
+	"2: Add a new listing"
+	"3: Remove an existing listing"
+	"4: Modify an existing listing"
+	"5: search for an existing listing"
+	"6: Exit the program"
+	if (1) {
+		printCurrentInventory()
+	}
+	else if (2) {
+		addVehicle()
+	}
+	else if (3) {
+		removeVehicle()
+	}
+	else if (4) {
+		modifyVehicle()
+	}
+	else if (5) {
+		searchInventory()
+	}
+	else if (6)
+		break;
+	}
+}
+
+public <return type?> getCurrentVehicleInfo {
+	get currently listed vehicle info from user for each element {
+		input for make
+			print request for make;
+			scanner for input;
+		input for model
+			print request for model;
+			scanner for input;
+		input for color
+			print request for color;
+			scanner for input;
+		input for year
+			print request for year;
+			scanner for input;
+		input for mileage
+			print request for mileage;
+			scanner for input;
+	}
+}
 
 
