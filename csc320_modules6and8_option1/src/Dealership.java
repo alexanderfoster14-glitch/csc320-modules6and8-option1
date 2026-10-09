@@ -1,8 +1,10 @@
 //Option 1 - Automobile Class
 
-public class automobile {
+public class Dealership {
 	public static void main(String[] args) {
-		
+	}
+}
+/*		
 		//required attributes
 		private String make;
 		private String model;
