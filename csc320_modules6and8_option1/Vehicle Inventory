@@ -1,0 +1,34 @@
+Vehicle Inventory
+
+Vehicle Make: Make
+Vehicle Model: Model
+Vehicle Color: Color
+Vehicle Year: Year
+Vehicle Mileage: Mileage
+Vehicle VIN: VIN
+
+Vehicle Make: Ford
+Vehicle Model: Mustang
+Vehicle Color: Black
+Vehicle Year: 2014
+Vehicle Mileage: 121023
+Vehicle VIN: US0QB3SN29RUXQLGV
+
+Vehicle Make: Subaru
+Vehicle Model: Solterra
+Vehicle Color: Blue
+Vehicle Year: 2023
+Vehicle Mileage: 34078
+Vehicle VIN: KTDZRK0P0RS37TYYH
+
+Sample VINs:
+US0QB3SN29RUXQLGV
+KTDZRK0P0RS37TYYH
+M2V05MM6JQAZGJB54
+QXI6QAHO9RG1U4XN3
+EANR9Z7PCNBEVG4DS
+9947BE2Q9QCSBVBAN
+YUMCAY1W0NZNQY139
+9GQ6UCFQVI5Z284VQ
+9ZXPP1QGQIGKKJASG
+G3E3S3TQM9GWI5QG9

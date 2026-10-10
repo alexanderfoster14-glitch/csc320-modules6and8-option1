@@ -1,7 +1,42 @@
 //Option 1 - Automobile Class
 
+import java.util.Scanner;
+import java.io.PrintWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class Dealership {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		FileInputStream fileInStream = null; //File input stream
+		FileOutputStream fileOutStream = null; //File output stream
+		PrintWriter outFS = null; //Output file writer
+		Scanner scnr; //Scanner object for getting user inputs
+		Scanner inFS = null; //Scanner object for file stream
+		
+		System.out.println("Type full file location."
+				+ "\n Example: C:/Temp Files/Vehicle Inventory.txt"); //directions for user
+		
+		//For ease of testing
+		fileOutStream = new FileOutputStream("C:/Temp Files/Vehicle Inventory.txt", true);
+			//File name already written for ease of testing
+		outFS = new PrintWriter(fileOutStream);
+		
+		//outFS.println("Testing writing to a file"); //Test to confirm lines are written and added to the text file
+		
+		//Open the file to a new input stream that reads the full file and creates an ArrayList of Automobile objects
+		System.out.println("Opening the existing Vehicle Inventory file \"Vehicle Inventory.txt\"");
+		fileInStream = new FileInputStream("C:/Temp Files/Vehicle Inventory.txt");
+		inFS = new Scanner(fileInStream);
+		
+		while(inFS.hasNext()) {
+			
+			
+		}
+		
+		fileInStream.close();
+		outFS.close();
+		
 	}
 }
 /*		
