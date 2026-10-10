@@ -1,0 +1,30 @@
+Vehicle Inventory
+
+Vehicle Make: Make
+Vehicle Model: Model
+Vehicle Color: Color
+Vehicle Year: Year
+Vehicle Mileage: Mileage
+Vehicle VIN: VIN
+
+Vehicle Make: Ford
+Vehicle Model: Mustang
+Vehicle Color: Black
+Vehicle Year: 2014
+Vehicle Mileage: 121023
+Vehicle VIN: US0QB3SN29RUXQLGV
+
+Vehicle Make: Subaru
+Vehicle Model: Solterra
+Vehicle Color: Blue
+Vehicle Year: 2023
+Vehicle Mileage: 34078
+Vehicle VIN: KTDZRK0P0RS37TYYH
+
+Vehicle Make: Nissan
+Vehicle Model: Ariya
+Vehicle Color: White
+Vehicle Year: 2025
+Vehicle Mileage: 19057
+Vehicle VIN: M2V05MM6JQAZGJB54
+
