@@ -169,44 +169,100 @@ public class Dealership {
 		return numberChoice;
 	}
 	
-	public static int getCurrYear() {
+	public static String inputCurrMake() {	//Get Make input from User
+		String currMake = "Unknown";
+		Scanner scnr = new Scanner(System.in);
+		try {
+			currMake = scnr.nextLine();
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Error: InputMismatchException at user input for vehicle Make.");
+			System.out.println("Reenter vehicle Make in format Xxxx Xxxx");
+			currMake = inputCurrMake();
+		}
+		return currMake;
+	}
+	
+	public static String inputCurrModel() {	//Get Model input from User
+		String currModel = "Unknown";
+		Scanner scnr = new Scanner(System.in);
+		try {
+			currModel = scnr.nextLine();
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Error: InputMismatchException at user input for vehicle Model.");
+			System.out.println("Reenter vehicle Model in format Xxxx Xxxx");
+			currModel = inputCurrModel();
+		}
+		return currModel;
+	}
+	
+	public static String inputCurrColor() {	//Get Color input from User
+		String currColor = "Unknown";
+		Scanner scnr = new Scanner(System.in);
+		try {
+			currColor = scnr.nextLine();
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Error: InputMismatchException at user input for vehicle Color.");
+			System.out.println("Reenter vehicle Color in format Xxxx Xxxx");
+			currColor = inputCurrColor();
+		}
+		return currColor;
+	}
+	
+	public static int inputCurrYear() {		//Get Year input from User
 		int currYear = -1;
 		Scanner scnr = new Scanner(System.in);
 		try {
-			currYear = scnr.nextInt();	//get user input on which option to select
+			currYear = scnr.nextInt();
 		}
 		catch (InputMismatchException e) {
 			System.out.println("Error: InputMismatchException at user input for vehicle Year.");
 			System.out.println("Reenter vehicle Year in number format XXXX");
-			currYear = getCurrYear();
+			currYear = inputCurrYear();
 		}
 		return currYear;
 	}
 	
-	public static int getCurrMileage() {
+	public static int inputCurrMileage() {	//Get Mileage input from User
 		int currMileage = -1;
 		Scanner scnr = new Scanner(System.in);
 		try {
-			currMileage = scnr.nextInt();	//get user input on which option to select
+			currMileage = scnr.nextInt();
 		}
 		catch (InputMismatchException e) {
 			System.out.println("Error: InputMismatchException at user input for vehicle Mileage.");
 			System.out.println("Reenter vehicle Year in number format XXXXXX");
-			currMileage = getCurrMileage();
+			currMileage = inputCurrMileage();
 		}
 		return currMileage;
-	}	
+	}
 	
-	public static int getVehicleNumber() {
+	public static String inputCurrVIN() {		//Get VIN input from User
+		String currVIN = "Unknown";
+		Scanner scnr = new Scanner(System.in);
+		try {
+			currVIN = scnr.nextLine();
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Error: InputMismatchException at user input for vehicle VIN.");
+			System.out.println("Reenter vehicle VIN in format XXXXXXXXXXXXXX");
+			currVIN = inputCurrVIN();
+		}
+		return currVIN;
+	}
+	
+	public static int inputVehicleNumber() {	//Get vehicle number input from User
 		int numberChoice = -1;
 		Scanner scnr = new Scanner(System.in);
 		try {
-			numberChoice = scnr.nextInt();	//get user input on which option to select
+			numberChoice = scnr.nextInt();
 		}
 		catch (InputMismatchException e) {
 			System.out.println("Error: InputMismatchException at user input for vehicle selection.");
 			System.out.println("Vehicle selected does not exist. Reenter vehicle selection.");
-			numberChoice = getVehicleNumber();
+			numberChoice = inputVehicleNumber();
 		}
 		return numberChoice;
 	}
@@ -249,17 +305,17 @@ public class Dealership {
 		System.out.println("You entered 1.\n"
 				+ "Enter the items below to add a new vehicle.");
 		System.out.println("Vehicle Make: ");
-		currMake = scnr.next();
+		currMake = inputCurrMake();
 		System.out.println("Vehicle Model: ");
-		currModel = scnr.next();
+		currModel = inputCurrModel();
 		System.out.println("Vehicle Color: ");
-		currColor = scnr.next();
+		currColor = inputCurrColor();
 		System.out.println("Vehicle Year: ");
-		currYear = getCurrYear();
+		currYear = inputCurrYear();
 		System.out.println("Vehicle Mileage: ");
-		currMileage = getCurrMileage();
+		currMileage = inputCurrMileage();
 		System.out.println("Vehicle VIN: ");
-		currVIN = scnr.next();
+		currVIN = inputCurrVIN();
 		//Add a vehicle to Automobiles ArrayList
 		Automobiles.add(new Automobile(currMake, currModel, currColor, currYear, currMileage, currVIN));
 		
@@ -273,7 +329,7 @@ public class Dealership {
 		//List vehicle information of a selected vehicle
 		System.out.print("Enter the # of the vehicle you want information about.\n"
 				+ "#");
-		vehicleNumber = getVehicleNumber();
+		vehicleNumber = inputVehicleNumber();
 		System.out.print("#" + (vehicleNumber) + ": ");
 		try {
 			System.out.print(((Automobile) Automobiles.get(vehicleNumber-1)).getMake() + " ");
@@ -301,7 +357,7 @@ public class Dealership {
 		System.out.println("You entered 3");
 		//Delete a vehicle from the ArrayList Automobiles
 		System.out.println("Enter the #Number associated with the vehicle to be deleted: ");
-		vehicleNumber = getVehicleNumber();
+		vehicleNumber = inputVehicleNumber();
 		System.out.println("Current vehicle information");
 		System.out.println("Vehicle Make: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getMake() + " ");
 		System.out.println("Vehicle Model: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getModel() + " ");
@@ -332,7 +388,7 @@ public class Dealership {
 		System.out.println("You entered 4");
 		//Update a vehicle attributes
 		System.out.println("Enter the #Number associated with the vehicle to be modified: ");
-		vehicleNumber = getVehicleNumber();
+		vehicleNumber = inputVehicleNumber();
 		System.out.println("Current vehicle information");
 		System.out.println("Vehicle Make: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getMake() + " ");
 		System.out.println("Vehicle Model: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getModel() + " ");
@@ -344,27 +400,27 @@ public class Dealership {
 		vehicleAttribute = scnr.next();
 		if (vehicleAttribute.equals("Make")) {
 			System.out.print("Enter the updated vehicle Make: ");
-			currMake = scnr.next();
+			currMake = inputCurrMake();
 			((Automobile) Automobiles.get(vehicleNumber-1)).setMake(currMake);
 		} else if (vehicleAttribute.equals("Model")) {
 			System.out.print("Enter the updated vehicle Model: ");
-			currModel = scnr.next();
+			currModel = inputCurrModel();
 			((Automobile) Automobiles.get(vehicleNumber-1)).setModel(currModel);
 		} else if (vehicleAttribute.equals("Color")) {
 			System.out.print("Enter the updated vehicle Color: ");
-			currColor = scnr.next();
+			currColor = inputCurrColor();
 			((Automobile) Automobiles.get(vehicleNumber-1)).setColor(currColor);
 		} else if (vehicleAttribute.equals("Year")) {
 			System.out.print("Enter the updated vehicle Year: ");
-			currYear = getCurrYear();
+			currYear = inputCurrYear();
 			((Automobile) Automobiles.get(vehicleNumber-1)).setYear(currYear);
 		} else if (vehicleAttribute.equals("Mileage")) {
 			System.out.print("Enter the updated vehicle Mileage: ");
-			currMileage = getCurrMileage();
+			currMileage = inputCurrMileage();
 			((Automobile) Automobiles.get(vehicleNumber-1)).setMileage(currMileage);
 		} else if (vehicleAttribute.equals("VIN")) {
 			System.out.print("Enter the updated vehicle VIN: ");
-			currVIN = scnr.next();
+			currVIN = inputCurrVIN();
 			((Automobile) Automobiles.get(vehicleNumber-1)).setVIN(currVIN);
 		}
 		
