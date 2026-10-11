@@ -37,15 +37,35 @@ Vehicle Year: 1994
 Vehicle Mileage: 135078
 Vehicle VIN: QXI6QAHO9RG1U4XN3
 
+Vehicle Make: Make1
+Vehicle Model: Model1
+Vehicle Color: Color1
+Vehicle Year: 2001
+Vehicle Mileage: 1001
+Vehicle VIN: EANR9Z7PCNBEVG4DS
+
+Vehicle Make: Make2
+Vehicle Model: Model2
+Vehicle Color: Color2
+Vehicle Year: 2002
+Vehicle Mileage: 1002
+Vehicle VIN: 9947BE2Q9QCSBVBAN
+
+Vehicle Make: Make3
+Vehicle Model: Model3
+Vehicle Color: Color3
+Vehicle Year: 903
+Vehicle Mileage: 1003
+Vehicle VIN: YUMCAY1W0NZNQY139
+
+Vehicle Make: Ferrari
+Vehicle Model: 296 GTB
+Vehicle Color: Red
+Vehicle Year: 2024
+Vehicle Mileage: 879
+Vehicle VIN: 9GQ6UCFQVI5Z284VQ
+
 Sample VINs:
-US0QB3SN29RUXQLGV
-KTDZRK0P0RS37TYYH
-M2V05MM6JQAZGJB54
-QXI6QAHO9RG1U4XN3
-EANR9Z7PCNBEVG4DS
-9947BE2Q9QCSBVBAN
-YUMCAY1W0NZNQY139
-9GQ6UCFQVI5Z284VQ
 9ZXPP1QGQIGKKJASG
 G3E3S3TQM9GWI5QG9
 
