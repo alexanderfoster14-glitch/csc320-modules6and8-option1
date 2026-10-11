@@ -59,7 +59,6 @@ public class Dealership {
 		try {
 			currLine = inFS.nextLine();	//skips the first line
 			while (!currLine.equals("Vehicle VIN: VIN")) {
-				//System.out.println("Entering while(while) loop");	//Testing if we get to this line
 				currLine = inFS.nextLine();
 			}
 		}
@@ -112,7 +111,8 @@ public class Dealership {
 		functionLoop(Automobiles);
 
 		//Ask if file should be updated
-		System.out.println("Would you like to update the vehicle inventory file with any changes made? Enter \"Y\" or \"N\"");
+		System.out.println("Would you like to update the vehicle inventory file with any changes made? Enter \"Y\" to udpate saved file.\n"
+				+ "All other inputs will remove all changes made to vehicle list.");
 		updateYesOrNo = scnr.next();
 		if (updateYesOrNo.equals("Y")) {
 			//fileOutStream = new FileOutputStream(fileLocation);	//Not needed
@@ -140,13 +140,13 @@ public class Dealership {
 			}
 			outFS.close();
 		} else {
-			System.out.println("Program exited.");
-			System.exit(1);
+			
 		}
-
+		System.out.println("Program exited.");
+		System.exit(1);
 	}
 
-	public static void printInstructions() {
+	public static void printInstructions() {	//Print options for interacting with database
 		System.out.print("Type number below to interact with inventory(1, 2, 3, 4, 5, 6):\n"
 				+ "1: Add a new vehicle\n"
 				+ "2: List vehicle information\n"
@@ -167,8 +167,35 @@ public class Dealership {
 			System.out.println("Error: InputMismatchException at user input for inventory interaction selection.");
 		}
 		return numberChoice;
-		
 	}
+	
+	public static int getCurrYear() {
+		int currYear = -1;
+		Scanner scnr = new Scanner(System.in);
+		try {
+			currYear = scnr.nextInt();	//get user input on which option to select
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Error: InputMismatchException at user input for vehicle Year.");
+			System.out.println("Reenter vehicle Year in number format XXXX");
+			currYear = getCurrYear();
+		}
+		return currYear;
+	}
+	
+	public static int getCurrMileage() {
+		int currMileage = -1;
+		Scanner scnr = new Scanner(System.in);
+		try {
+			currMileage = scnr.nextInt();	//get user input on which option to select
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Error: InputMismatchException at user input for vehicle Mileage.");
+			System.out.println("Reenter vehicle Year in number format XXXXXX");
+			currMileage = getCurrMileage();
+		}
+		return currMileage;
+	}	
 	
 	public static int getVehicleNumber() {
 		int numberChoice = -1;
@@ -228,9 +255,9 @@ public class Dealership {
 		System.out.println("Vehicle Color: ");
 		currColor = scnr.next();
 		System.out.println("Vehicle Year: ");
-		currYear = scnr.nextInt();
+		currYear = getCurrYear();
 		System.out.println("Vehicle Mileage: ");
-		currMileage = scnr.nextInt();
+		currMileage = getCurrMileage();
 		System.out.println("Vehicle VIN: ");
 		currVIN = scnr.next();
 		//Add a vehicle to Automobiles ArrayList
@@ -260,6 +287,8 @@ public class Dealership {
 		catch (IndexOutOfBoundsException e) {
 			System.out.println("Error2: Vehicle selection does not exist in current inventory.");
 		}
+		
+		System.out.print("\n");
 		
 		printInstructions();
 	}
@@ -327,11 +356,11 @@ public class Dealership {
 			((Automobile) Automobiles.get(vehicleNumber-1)).setColor(currColor);
 		} else if (vehicleAttribute.equals("Year")) {
 			System.out.print("Enter the updated vehicle Year: ");
-			currYear = scnr.nextInt();
+			currYear = getCurrYear();
 			((Automobile) Automobiles.get(vehicleNumber-1)).setYear(currYear);
 		} else if (vehicleAttribute.equals("Mileage")) {
 			System.out.print("Enter the updated vehicle Mileage: ");
-			currMileage = scnr.nextInt();
+			currMileage = getCurrMileage();
 			((Automobile) Automobiles.get(vehicleNumber-1)).setMileage(currMileage);
 		} else if (vehicleAttribute.equals("VIN")) {
 			System.out.print("Enter the updated vehicle VIN: ");
@@ -357,6 +386,8 @@ public class Dealership {
 			System.out.print(((Automobile) Automobiles.get(i)).getVIN() + " ");
 			System.out.print("\n");
 		}
+		
+		System.out.print("\n");
 		
 		printInstructions();
 	}
