@@ -29,14 +29,15 @@ public class Dealership {
 		int vehicleNumber;	//used to get the vehicle listing number within the Automobiles ArrayList
 		String vehicleAttribute;	//used to get the attribute to change about a specific vehicle
 		String updateYesOrNo;	//Used to ask if user would like to update the file with changes made
+		String deleteYesOrNo;	//Used to ask if user would like to delete the selected vehicle
 		
 		//File location on Laptop:
 			//C:\\Users\\alexa\\OneDrive\\Desktop\\Code\Vehicle Inventory.txt
 		
 		//File location on Desktop;
-			//C:\\Users\\Alex\\Desktop\\Coding\\csc320-modules6and8-option1\\csc320_modules6and8_option1\\Vehicle Inventory.txt
+			//C:\\Users\\Alex\\Desktop\\Coding\\csc320-modules6and8-option1\\Vehicle Inventory.txt
 		
-		fileLocation = "C:\\Users\\Alex\\Desktop\\Coding\\csc320-modules6and8-option1\\csc320_modules6and8_option1\\Vehicle Inventory.txt";
+		fileLocation = "C:\\Users\\Alex\\Desktop\\Coding\\csc320-modules6and8-option1\\Vehicle Inventory.txt";
 		System.out.println("Opening file location."); //Sends console update
 		
 		//Open the file to a new input stream that reads the full file and creates an ArrayList of Automobile objects
@@ -133,14 +134,59 @@ public class Dealership {
 			} else if (functionSelection == 3) {
 				System.out.println("You entered 3");
 				//Delete a vehicle from the ArrayList Automobiles
+				System.out.println("Enter the #Number associated with the vehicle to be deleted: ");
+				vehicleNumber = scnr.nextInt();
+				System.out.println("Current vehicle information");
+				System.out.println("Vehicle Make: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getMake() + " ");
+				System.out.println("Vehicle Model: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getModel() + " ");
+				System.out.println("Vehicle Color: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getColor() + " ");
+				System.out.println("Vehicle Year: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getYear() + " ");
+				System.out.println("Vehicle Mileage: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getMileage() + " ");
+				System.out.println("Vehicle VIN: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getVIN() + " ");
+				System.out.println("Confirm if you want to delete this vehicle. Enter \"Remove\" to remove vehicle from inventory.");
+				deleteYesOrNo = scnr.next();
+				if (deleteYesOrNo.equals("Remove")) {
+					Automobiles.remove(vehicleNumber-1);
+				}
 			} else if (functionSelection == 4) {
 				System.out.println("You entered 4");
 				//Update a vehicle attributes
 				System.out.println("Enter the #Number associated with the vehicle to be modified: ");
 				vehicleNumber = scnr.nextInt();
+				System.out.println("Current vehicle information");
+				System.out.println("Vehicle Make: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getMake() + " ");
+				System.out.println("Vehicle Model: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getModel() + " ");
+				System.out.println("Vehicle Color: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getColor() + " ");
+				System.out.println("Vehicle Year: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getYear() + " ");
+				System.out.println("Vehicle Mileage: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getMileage() + " ");
+				System.out.println("Vehicle VIN: " + ((Automobile) Automobiles.get(vehicleNumber-1)).getVIN() + " ");
 				System.out.println("Enter the attribute to change (\"Make\", \"Model\", \"Color\", \"Year\", \"Mileage\", or \"VIN\": ");
 				vehicleAttribute = scnr.next();
-				
+				if (vehicleAttribute.equals("Make")) {
+					System.out.print("Enter the updated vehicle Make: ");
+					currMake = scnr.next();
+					((Automobile) Automobiles.get(vehicleNumber-1)).setMake(currMake);
+				} else if (vehicleAttribute.equals("Model")) {
+					System.out.print("Enter the updated vehicle Model: ");
+					currModel = scnr.next();
+					((Automobile) Automobiles.get(vehicleNumber-1)).setModel(currModel);
+				} else if (vehicleAttribute.equals("Color")) {
+					System.out.print("Enter the updated vehicle Color: ");
+					currColor = scnr.next();
+					((Automobile) Automobiles.get(vehicleNumber-1)).setColor(currColor);
+				} else if (vehicleAttribute.equals("Year")) {
+					System.out.print("Enter the updated vehicle Year: ");
+					currYear = scnr.nextInt();
+					((Automobile) Automobiles.get(vehicleNumber-1)).setYear(currYear);
+				} else if (vehicleAttribute.equals("Mileage")) {
+					System.out.print("Enter the updated vehicle Mileage: ");
+					currMileage = scnr.nextInt();
+					((Automobile) Automobiles.get(vehicleNumber-1)).setMileage(currMileage);
+				} else if (vehicleAttribute.equals("VIN")) {
+					System.out.print("Enter the updated vehicle VIN: ");
+					currVIN = scnr.next();
+					((Automobile) Automobiles.get(vehicleNumber-1)).setVIN(currVIN);
+				}
 			} else if (functionSelection == 5) {
 				System.out.println("You entered 5.\n"
 						+ "Full vehicle inventory listed below.\n");
@@ -157,179 +203,60 @@ public class Dealership {
 			}
 			functionSelection = scnr.nextInt();
 		}
-		
+		/*
 		//Ask if file should be updated
 		System.out.println("Would you like to update the vehicle inventory file with any changes made? Enter \"Yes\" or \"No\"");
 		updateYesOrNo = scnr.next();
-		if (updateYesOrNo == "Yes") {
-			//Writing to the file
+		if (updateYesOrNo.equals("Yes")) {
 			fileOutStream = new FileOutputStream(fileLocation);
+			outFS = new PrintWriter(fileLocation);
+			//Writing to the file
 			outFS.println("Vehicle Inventory");
 			outFS.println("");
 			for (i = 0; i < Automobiles.size(); ++i) {
-				System.out.print("Vehicle Make: " + ((Automobile) Automobiles.get(i)).getMake() + " ");
-				System.out.print("Vehicle Model: " + ((Automobile) Automobiles.get(i)).getModel() + " ");
-				System.out.print("Vehicle Color: " + ((Automobile) Automobiles.get(i)).getColor() + " ");
-				System.out.print("Vehicle Year: " + ((Automobile) Automobiles.get(i)).getYear() + " ");
-				System.out.print("Vehicle Mileage: " + ((Automobile) Automobiles.get(i)).getMileage() + " ");
-				System.out.print("Vehicle VIN: " + ((Automobile) Automobiles.get(i)).getVIN() + " ");
-				System.out.print("\n");
+				System.out.println("Vehicle Make: " + ((Automobile) Automobiles.get(i)).getMake() + " ");
+				System.out.println("Vehicle Model: " + ((Automobile) Automobiles.get(i)).getModel() + " ");
+				System.out.println("Vehicle Color: " + ((Automobile) Automobiles.get(i)).getColor() + " ");
+				System.out.println("Vehicle Year: " + ((Automobile) Automobiles.get(i)).getYear() + " ");
+				System.out.println("Vehicle Mileage: " + ((Automobile) Automobiles.get(i)).getMileage() + " ");
+				System.out.println("Vehicle VIN: " + ((Automobile) Automobiles.get(i)).getVIN() + " ");
+				System.out.println("\n");
 			}
-			outFS = new PrintWriter(fileOutStream);
 			outFS.close();
 		} else {
 			
 		}
+		*/
 	}
 }
+
 /*		
-		//use Try...Catch constructs for all methods
-		//unless noted, methods should return a Success or Failure message
-			//Failure message defined in "catch"
-		
-		//Methods below
-		//1: Create an additional class to call your automobile class
-			//(e.g., Main or AutomobileInventory). Include a try..catch
-			//construct and print it to the console.
-		lesson on creating a class - Module 8
-		
-		//2: Call automobile class with parameterized constructor
-			//(e.g., "make, model, color, year, mileage").
-			//Then call the method to list the values.
-			//Loop through the array and print to the screen.
-		call class? - Module 8
-		
-		//3: Call the remove vehicle method to clear the variables.
-			//Print the return value.
-		public String RemoveVehicle(String make, String model,
-				String color, int year) {
-			if (values match a current vehicle) {
-				remove vehicle info (by setting each value to 0);
-			}
-			else {
-				return message indicating mismatch (vehicle info not in system);
-			}
+	//use Try...Catch constructs for all methods
+	//unless noted, methods should return a Success or Failure message
+		//Failure message defined in "catch"
+	
+	//Methods below
+	//1: Create an additional class to call your automobile class
+		//(e.g., Main or AutomobileInventory). Include a try..catch
+		//construct and print it to the console.
+	lesson on creating a class - Module 8
+	
+	//6: Display a message asking if the user wants to print the information to a
+		//file (Y or N).
+		//Use a scanner to capture the response. If "Y", print the file to a
+		//predefined location (e.g., C:\Temp\Autos.txt).
+		//Note: you may want to create a method to print the information in the
+		//main class.
+		//If "N", indicate that a file will not be printed.
+	public <file type?> updateFileInfo (String <aary?> vehicle info) {
+		request from use "Do you want to print the information to a file?"
+		scanner for user input as "Y" or "N"
+		if "Y" {
+			update a file; code to update a file?
 		}
-		
-		//4: Add a new vehicle.
-			//Print the return value.
-			//Call the list method and print the new vehicle information to the screen.
-		public String AddVehicle(String make, String model,
-				String color, int year) {
-			get user input for each value {
-				input for make
-					print request for make;
-					scanner for input;
-				input for model
-					print request for model;
-					scanner for input;
-				input for color
-					print request for color;
-					scanner for input;
-				input for year
-					print request for year;
-					scanner for input;
-				input for milage
-					print request for mileage;
-					scanner for input;
-				return all elements in one array? return each item as separate method?
-			}
-			print new vehicle info to screen {
-				print make;
-				print model;
-				print color;
-				print year;
-				print mileage;
-			}
+		if "N" {
+			break; end this request
 		}
-		
-		//5: Update the vehicle.
-			//Print the return value.
-			//Call the listing method and print the information to the screen.
-		public String VehicleListing (String make, String model,
-				String color, int year) {
-			get currently listed vehicle info from user {
-				input for make
-					print request for make;
-					scanner for input;
-				input for model
-					print request for model;
-					scanner for input;
-				input for color
-					print request for color;
-					scanner for input;
-				input for year
-					print request for year;
-					scanner for input;
-				input for milage
-					print request for mileage;
-					scanner for input;
-				}
-				
-			get user input on which value to update {
-				output request for which 
-				if input == element name ("make", "model", "color", "year", "mileage") {
-					update element {
-						get input on updated value;
-						return updated array?						
-					}
-				}
-				return updated element(s) or array?
-			}
-		}
-		
-		//6: Display a message asking if the user wants to print the information to a
-			//file (Y or N).
-			//Use a scanner to capture the response. If "Y", print the file to a
-			//predefined location (e.g., C:\Temp\Autos.txt).
-			//Note: you may want to create a method to print the information in the
-			//main class.
-			//If "N", indicate that a file will not be printed.
-		public <file type?> updateFileInfo (String <aary?> vehicle info) {
-			request from use "Do you want to print the information to a file?"
-			scanner for user input as "Y" or "N"
-			if "Y" {
-				update a file; code to update a file?
-			}
-			if "N" {
-				break; end this request
-			}
-			return; return file? return void?
-		}
-		
-		//expected methods:
-		public <return type?> getVehicleInfo {
-			get currently listed vehicle info from user for each element {
-				input for make
-					print request for make;
-					scanner for input;
-				input for model
-					print request for model;
-					scanner for input;
-				input for color
-					print request for color;
-					scanner for input;
-				input for year
-					print request for year;
-					scanner for input;
-				input for milage
-					print request for mileage;
-					scanner for input;
-			}
-			
-		}
-		
+		return; return file? return void?
 	}
-}
-
-/*
-Expected vehicle info formatting:
-
-Vehicle #: as element # in an ArrayList
-Vehicle Make as a String
-Vehicle Model as a String
-Vehicle Color as String
-Vehicle Year as XXXX
-Vehicle Mileage as XXX,XXX
-
 */
