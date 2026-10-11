@@ -28,6 +28,7 @@ public class Dealership {
 		int i;	//integer for use in for loops
 		int vehicleNumber;	//used to get the vehicle listing number within the Automobiles ArrayList
 		String vehicleAttribute;	//used to get the attribute to change about a specific vehicle
+		String updateYesOrNo;	//Used to ask if user would like to update the file with changes made
 		
 		//File location on Laptop:
 			//C:\\Users\\alexa\\OneDrive\\Desktop\\Code\Vehicle Inventory.txt
@@ -35,7 +36,7 @@ public class Dealership {
 		//File location on Desktop;
 			//C:\\Users\\Alex\\Desktop\\Coding\\csc320-modules6and8-option1\\csc320_modules6and8_option1\\Vehicle Inventory.txt
 		
-		fileLocation = "C:\\Users\\alexa\\OneDrive\\Desktop\\Code\\Vehicle Inventory.txt";
+		fileLocation = "C:\\Users\\Alex\\Desktop\\Coding\\csc320-modules6and8-option1\\csc320_modules6and8_option1\\Vehicle Inventory.txt";
 		System.out.println("Opening file location."); //Sends console update
 		
 		//Open the file to a new input stream that reads the full file and creates an ArrayList of Automobile objects
@@ -85,15 +86,13 @@ public class Dealership {
 		
 		//Print directions for user
 		System.out.println("Vehicles loaded into ArrayList successfully.\n\n"
-				+ "Type number below to interact with inventory(1, 2, 3, 4):\n"
+				+ "Type number below to interact with inventory(1, 2, 3, 4, 5, 6):\n"
 				+ "1: Add a new vehicle\n"
 				+ "2: List vehicle information\n"
 				+ "3: Remove a vehicle\n"
 				+ "4: Update a vehicle attributes\n"
 				+ "5: Display full vehicle invenotry\n"
-				+ "6: End functoin selection\n"
-				//Search function?
-				//Exit function?
+				+ "6: End function selection\n"
 				+ "Number: ");
 		
 		functionSelection = scnr.nextInt();	//get user input on which option to select
@@ -120,7 +119,17 @@ public class Dealership {
 			} else if (functionSelection == 2) {
 				System.out.println("You entered 2");
 				//List vehicle information of a selected vehicle
-				System.out.println("");
+				System.out.print("Enter the # of the vehicle you want information about.\n"
+						+ "#");
+				vehicleNumber = scnr.nextInt();
+				System.out.print("#" + (vehicleNumber) + ": ");
+				System.out.print(((Automobile) Automobiles.get(vehicleNumber-1)).getMake() + " ");
+				System.out.print(((Automobile) Automobiles.get(vehicleNumber-1)).getModel() + " ");
+				System.out.print(((Automobile) Automobiles.get(vehicleNumber-1)).getColor() + " ");
+				System.out.print(((Automobile) Automobiles.get(vehicleNumber-1)).getYear() + " ");
+				System.out.print(((Automobile) Automobiles.get(vehicleNumber-1)).getMileage() + " ");
+				System.out.print(((Automobile) Automobiles.get(vehicleNumber-1)).getVIN() + " ");
+				System.out.print("\n");
 			} else if (functionSelection == 3) {
 				System.out.println("You entered 3");
 				//Delete a vehicle from the ArrayList Automobiles
@@ -149,13 +158,28 @@ public class Dealership {
 			functionSelection = scnr.nextInt();
 		}
 		
-		/*
-		//Writing to the file
-		fileOutStream = new FileOutputStream(fileLocation, true);
-			//File name already written for ease of testing
-		outFS = new PrintWriter(fileOutStream);
-		outFS.close();
-		*/
+		//Ask if file should be updated
+		System.out.println("Would you like to update the vehicle inventory file with any changes made? Enter \"Yes\" or \"No\"");
+		updateYesOrNo = scnr.next();
+		if (updateYesOrNo == "Yes") {
+			//Writing to the file
+			fileOutStream = new FileOutputStream(fileLocation);
+			outFS.println("Vehicle Inventory");
+			outFS.println("");
+			for (i = 0; i < Automobiles.size(); ++i) {
+				System.out.print("Vehicle Make: " + ((Automobile) Automobiles.get(i)).getMake() + " ");
+				System.out.print("Vehicle Model: " + ((Automobile) Automobiles.get(i)).getModel() + " ");
+				System.out.print("Vehicle Color: " + ((Automobile) Automobiles.get(i)).getColor() + " ");
+				System.out.print("Vehicle Year: " + ((Automobile) Automobiles.get(i)).getYear() + " ");
+				System.out.print("Vehicle Mileage: " + ((Automobile) Automobiles.get(i)).getMileage() + " ");
+				System.out.print("Vehicle VIN: " + ((Automobile) Automobiles.get(i)).getVIN() + " ");
+				System.out.print("\n");
+			}
+			outFS = new PrintWriter(fileOutStream);
+			outFS.close();
+		} else {
+			
+		}
 	}
 }
 /*		
