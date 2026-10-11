@@ -11,6 +11,7 @@ public class Dealership {
 	public static void main(String[] args) throws IOException {
 		FileInputStream fileInStream = null;	//File input stream
 		FileOutputStream fileOutStream = null;	//File output stream
+		String fileLocation;	//File location that can be passed to fileInStream and fileOutStream
 		PrintWriter outFS = null;	//Output file writer
 		Scanner scnr = new Scanner(System.in);	//Scanner object
 		Scanner inFS = null;	//Scanner object for file stream
@@ -23,23 +24,23 @@ public class Dealership {
 		int currMileage;	//Current vehicle Mileage
 		String currVIN;		//Current vehicle VIN
 		ArrayList Automobiles = new ArrayList();	//ArrayList that will be used to store each automobile
-		int functionSelection;
+		int functionSelection;	//User input on which option to select for engaging with inventory
 		int i;	//integer for use in for loops
+		int vehicleNumber;	//used to get the vehicle listing number within the Automobiles ArrayList
+		String vehicleAttribute;	//used to get the attribute to change about a specific vehicle
 		
-		System.out.println("Type full file location."
-				+ "\n Example: C:/Temp Files/Vehicle Inventory.txt"); //directions for user
+		//File location on Laptop:
+			//C:\\Users\\alexa\\OneDrive\\Desktop\\Code\Vehicle Inventory.txt
 		
-		//For ease of testing
-		fileOutStream = new FileOutputStream("C:\\Users\\Alex\\Desktop\\Coding\\csc320-modules6and8-option1\\csc320_modules6and8_option1\\Vehicle Inventory.txt", true);
-			//File name already written for ease of testing
-		outFS = new PrintWriter(fileOutStream);
+		//File location on Desktop;
+			//C:\\Users\\Alex\\Desktop\\Coding\\csc320-modules6and8-option1\\csc320_modules6and8_option1\\Vehicle Inventory.txt
 		
-		//outFS.println("Testing writing to a file"); //Test to confirm lines are written and added to the text file
-		//System.out.println("The text should have a line added at the end of the file.");
+		fileLocation = "C:\\Users\\alexa\\OneDrive\\Desktop\\Code\\Vehicle Inventory.txt";
+		System.out.println("Opening file location."); //Sends console update
 		
 		//Open the file to a new input stream that reads the full file and creates an ArrayList of Automobile objects
 		System.out.println("Opening the existing Vehicle Inventory file \"Vehicle Inventory.txt\"\n");
-		fileInStream = new FileInputStream("C:\\Users\\Alex\\Desktop\\Coding\\csc320-modules6and8-option1\\csc320_modules6and8_option1\\Vehicle Inventory.txt");
+		fileInStream = new FileInputStream(fileLocation);
 		inFS = new Scanner(fileInStream);
 		
 		//System.out.println("testing");	//Test line
@@ -79,6 +80,9 @@ public class Dealership {
 			//System.out.println("End of while loop");	//Testing
 		}
 		
+		//Close the file once it's been read into a string
+		inFS.close();
+		
 		//Print directions for user
 		System.out.println("Vehicles loaded into ArrayList successfully.\n\n"
 				+ "Type number below to interact with inventory(1, 2, 3, 4):\n"
@@ -86,58 +90,71 @@ public class Dealership {
 				+ "2: List vehicle information\n"
 				+ "3: Remove a vehicle\n"
 				+ "4: Update a vehicle attributes\n"
-				+ "5: Display full vehicle invenotry\n"				
+				+ "5: Display full vehicle invenotry\n"
+				+ "6: End functoin selection\n"
 				//Search function?
 				//Exit function?
 				+ "Number: ");
 		
 		functionSelection = scnr.nextInt();	//get user input on which option to select
 		
-		if (functionSelection == 1) {
-			//Print confirmation and instructions
-			System.out.println("You entered 1.\n"
-					+ "Enter the items below to add a new vehicle.");
-			System.out.println("Vehicle Make: ");
-			currMake = scnr.next();
-			System.out.println("Vehicle Model: ");
-			currModel = scnr.next();
-			System.out.println("Vehicle Color: ");
-			currColor = scnr.next();
-			System.out.println("Vehicle Year: ");
-			currYear = scnr.nextInt();
-			System.out.println("Vehicle Mileage: ");
-			currMileage = scnr.nextInt();
-			System.out.println("Vehicle VIN: ");
-			currVIN = scnr.next();
-			//Add a vehicle to Automobiles ArrayList
-			Automobiles.add(new Automobile(currMake, currModel, currColor, currYear, currMileage, currVIN));
-		} else if (functionSelection == 2) {
-			System.out.println("You entered 2");
-			//List vehicle information of a selected vehicle
-		} else if (functionSelection == 3) {
-			System.out.println("You entered 3");
-			//Delete a vehicle from the ArrayList Automobiles
-		} else if (functionSelection == 4) {
-			System.out.println("You entered 4");
-			//Update a vehicle attributes
-		} else if (functionSelection == 5) {
-			System.out.println("You entered 5.\n"
-					+ "Full vehicle inventory listed below.\n");
-			for (i = 0; i < Automobiles.size(); ++i) {
-		         System.out.print(((Automobile) Automobiles.get(i)).getMake() + " ");
-		         System.out.print(((Automobile) Automobiles.get(i)).getModel() + " ");
-		         System.out.print(((Automobile) Automobiles.get(i)).getColor() + " ");
-		         System.out.print(((Automobile) Automobiles.get(i)).getYear() + " ");
-		         System.out.print(((Automobile) Automobiles.get(i)).getMileage() + " ");
-		         System.out.print(((Automobile) Automobiles.get(i)).getVIN() + " ");
-		         System.out.print("\n");
+		while (functionSelection != 6) {
+			if (functionSelection == 1) {
+				//Print confirmation and instructions
+				System.out.println("You entered 1.\n"
+						+ "Enter the items below to add a new vehicle.");
+				System.out.println("Vehicle Make: ");
+				currMake = scnr.next();
+				System.out.println("Vehicle Model: ");
+				currModel = scnr.next();
+				System.out.println("Vehicle Color: ");
+				currColor = scnr.next();
+				System.out.println("Vehicle Year: ");
+				currYear = scnr.nextInt();
+				System.out.println("Vehicle Mileage: ");
+				currMileage = scnr.nextInt();
+				System.out.println("Vehicle VIN: ");
+				currVIN = scnr.next();
+				//Add a vehicle to Automobiles ArrayList
+				Automobiles.add(new Automobile(currMake, currModel, currColor, currYear, currMileage, currVIN));
+			} else if (functionSelection == 2) {
+				System.out.println("You entered 2");
+				//List vehicle information of a selected vehicle
+			} else if (functionSelection == 3) {
+				System.out.println("You entered 3");
+				//Delete a vehicle from the ArrayList Automobiles
+			} else if (functionSelection == 4) {
+				System.out.println("You entered 4");
+				//Update a vehicle attributes
+				System.out.println("Enter the #Number associated with the vehicle to be modified: ");
+				vehicleNumber = scnr.nextInt();
+				System.out.println("Enter the attribute to change (\"Make\", \"Model\", \"Color\", \"Year\", \"Mileage\", or \"VIN\": ");
+				vehicleAttribute = scnr.next();
+				
+			} else if (functionSelection == 5) {
+				System.out.println("You entered 5.\n"
+						+ "Full vehicle inventory listed below.\n");
+				for (i = 0; i < Automobiles.size(); ++i) {
+					System.out.print("#" + (i+1) + ": ");
+					System.out.print(((Automobile) Automobiles.get(i)).getMake() + " ");
+					System.out.print(((Automobile) Automobiles.get(i)).getModel() + " ");
+					System.out.print(((Automobile) Automobiles.get(i)).getColor() + " ");
+					System.out.print(((Automobile) Automobiles.get(i)).getYear() + " ");
+					System.out.print(((Automobile) Automobiles.get(i)).getMileage() + " ");
+					System.out.print(((Automobile) Automobiles.get(i)).getVIN() + " ");
+					System.out.print("\n");
+				}
 			}
+			functionSelection = scnr.nextInt();
 		}
 		
-		
+		/*
+		//Writing to the file
+		fileOutStream = new FileOutputStream(fileLocation, true);
+			//File name already written for ease of testing
+		outFS = new PrintWriter(fileOutStream);
 		outFS.close();
-		inFS.close();
-		
+		*/
 	}
 }
 /*		
