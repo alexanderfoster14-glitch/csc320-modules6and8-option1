@@ -120,6 +120,7 @@ public class Dealership {
 			} else if (functionSelection == 2) {
 				System.out.println("You entered 2");
 				//List vehicle information of a selected vehicle
+				System.out.println("");
 			} else if (functionSelection == 3) {
 				System.out.println("You entered 3");
 				//Delete a vehicle from the ArrayList Automobiles
